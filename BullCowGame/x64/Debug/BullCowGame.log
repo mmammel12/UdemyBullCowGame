@@ -1,8 +1,7 @@
 ﻿  main.cpp
   FBullCowGame.cpp
 e:\coding stuff\c++\udemy\section_02\bullcowgame\bullcowgame\fbullcowgame.cpp(8): warning C4267: 'return': conversion from 'size_t' to 'int32', possible loss of data
-e:\coding stuff\c++\udemy\section_02\bullcowgame\bullcowgame\fbullcowgame.cpp(45): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-e:\coding stuff\c++\udemy\section_02\bullcowgame\bullcowgame\fbullcowgame.cpp(85): warning C4267: 'initializing': conversion from 'size_t' to 'int32', possible loss of data
+e:\coding stuff\c++\udemy\section_02\bullcowgame\bullcowgame\fbullcowgame.cpp(14): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+e:\coding stuff\c++\udemy\section_02\bullcowgame\bullcowgame\fbullcowgame.cpp(56): warning C4267: 'initializing': conversion from 'size_t' to 'int32', possible loss of data
   Generating Code...
-e:\coding stuff\c++\udemy\section_02\bullcowgame\bullcowgame\fbullcowgame.cpp(38): warning C4715: 'FBullCowGame::GetHiddenWord': not all control paths return a value
   BullCowGame.vcxproj -> E:\Coding Stuff\C++\Udemy\Section_02\BullCowGame\x64\Debug\BullCowGame.exe

@@ -14,7 +14,6 @@ using int32 = int;
 void PrintIntro();
 int main();
 void PlayGame();
-int32 GetValidDifficulty();
 FText GetValidGuess();
 void PrintGameSummary();
 bool AskToPlayAgain();
@@ -32,44 +31,9 @@ int main()
 	return 0; //exit the application
 }
 
-int32 GetValidDifficulty()
-{
-	int32 InputWordLength;
-	int32 Difficulty;
-	bool ValidLength = false;
-
-	do
-	{
-		std::cout << "\nHow long do you want the hidden word to be?\n";
-		std::cout << "Enter a number from 3-7: ";
-		try
-		{
-			std::cin >> InputWordLength;
-			if (InputWordLength < 3 || InputWordLength > 7)
-			{
-				ValidLength = false;
-				std::cout << "Please enter a number from 3-7.\n";
-			}
-			else
-			{
-				ValidLength = true;
-				Difficulty = InputWordLength;
-			}
-		}
-		catch (...)
-		{
-			ValidLength = false;
-			std::cout << "Please enter an integer from 3-7.\n";
-		}
-	} while (!ValidLength);
-
-	return Difficulty;
-}
-
 void PlayGame()
 {
-	BCGame.Reset(GetValidDifficulty());
-	std::cout << "\nYou have " << BCGame.GetMaxTries() << " tries to win.\n\n";
+	BCGame.Reset();
 	int32 MaxTries = BCGame.GetMaxTries();
 
 	// loop asking for guesses while game
@@ -86,7 +50,6 @@ void PlayGame()
 	}
 
 	PrintGameSummary();
-
 	return;
 }
 
@@ -152,6 +115,7 @@ bool AskToPlayAgain()
 void PrintIntro()
 {
 	std::cout << "\n\nWelcome to Bulls and Cows, a fun word game.\n";
-	std::cout << "Can you guess the isogram I am thinking of?\n";
+	std::cout << "Can you guess the " << BCGame.GetHiddenWordLength() << " letter isogram I am thinking of?\n";
+	std::cout << "You have " << BCGame.GetMaxTries() << " tries to win.\n\n";
 	return;
 }

@@ -2,52 +2,23 @@
 #include <map>
 #define TMap std::map
 
-FBullCowGame::FBullCowGame() { Reset(3); } // default constructor
+FBullCowGame::FBullCowGame() { Reset(); } // default constructor
 
 int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
 int32 FBullCowGame::GetHiddenWordLength() const { return MyHiddenWord.length(); }
-
-FString FBullCowGame::GetHiddenWord(int32 WordLength) const
-{
-	int32 SelectWord = rand() % 10;
-	FString HiddenWord;
-
-	switch (WordLength)
-	{
-	case 3:
-		HiddenWord = ThreeLetterWords[SelectWord];
-		return HiddenWord;
-		break;
-	case 4:
-		HiddenWord = FourLetterWords[SelectWord];
-		return HiddenWord;
-		break;
-	case 5:
-		HiddenWord = FiveLetterWords[SelectWord];
-		return HiddenWord;
-		break;
-	case 6:
-		HiddenWord = SixLetterWords[SelectWord];
-		return HiddenWord;
-		break;
-	case 7:
-		HiddenWord = SevenLetterWords[SelectWord];
-		return HiddenWord;
-		break;
-	}
-}
-
 bool FBullCowGame::IsGameWon() const { return bGameWon; }
 
 int32 FBullCowGame::GetMaxTries() const
 {
-	TMap<int32, int32> WordLengthToMaxTries{ {3, 5}, {4, 8}, {5, 12}, {6, 18}, {7, 25} };
+	TMap<int32, int32> WordLengthToMaxTries{ {3, 5}, {4, 7}, {5, 10}, {6, 15}, {7, 21} };
 	return WordLengthToMaxTries[MyHiddenWord.length()];
 }
 
-void FBullCowGame::Reset(int32 Difficulty)
+void FBullCowGame::Reset()
 {
-	MyHiddenWord = GetHiddenWord(Difficulty);
+	const FString HIDDEN_WORD = "planet"; // this MUST be an isogram
+	MyHiddenWord = HIDDEN_WORD;
+
 	MyCurrentTry = 1;
 	bGameWon = false;
 	return;
@@ -77,7 +48,7 @@ EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 	}
 }
 
-//receives a valid guess, increments turn, and returns count
+// receives a valid guess, increments turn, and returns count
 FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
 {
 	MyCurrentTry++;
