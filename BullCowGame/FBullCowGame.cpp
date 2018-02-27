@@ -1,5 +1,9 @@
+#pragma once
+
 #include "FBullCowGame.h"
 #include <map>
+
+// Makes syntax Unreal friendly
 #define TMap std::map
 
 FBullCowGame::FBullCowGame() { Reset(); } // default constructor

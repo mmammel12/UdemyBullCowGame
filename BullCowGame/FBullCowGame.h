@@ -1,6 +1,13 @@
+/*
+The game logic, no direct user interaction
+The game is a simple guess the word game
+*/
+
 #pragma once
+
 #include <string>
 
+// Makes syntax Unreal friendly
 using FString = std::string;
 using int32 = int;
 

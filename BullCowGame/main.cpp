@@ -4,13 +4,17 @@ This acts as the view in a MVC pattern, and is responsible for all
 user interaction. For game logic see the FBullCowGame class.
 */
 
+#pragma once
+
 #include <iostream>
 #include <string>
 #include "FBullCowGame.h"
 
+// Makes syntax Unreal friendly
 using FText = std::string;
 using int32 = int;
 
+// function prototypes outside a class
 void PrintIntro();
 int main();
 void PlayGame();
@@ -18,7 +22,7 @@ FText GetValidGuess();
 void PrintGameSummary();
 bool AskToPlayAgain();
 
-FBullCowGame BCGame; // Instatiates a new game
+FBullCowGame BCGame; // Instatiates a new game, reused across plays
 
 //entry point for application
 int main() 
@@ -31,6 +35,7 @@ int main()
 	return 0; //exit the application
 }
 
+// plays a single game to completion
 void PlayGame()
 {
 	BCGame.Reset();
@@ -53,6 +58,7 @@ void PlayGame()
 	return;
 }
 
+// loop continually until user gives a valid guess
 FText GetValidGuess()
 {
 	FText Guess = "";
